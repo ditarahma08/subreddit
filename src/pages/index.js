@@ -1,6 +1,6 @@
-import Banner from '@/components/banner'
-import Head from 'next/head'
-import { useState, useEffect } from 'react'
+import Banner from "@/components/banner";
+import Head from "next/head";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   return (
@@ -11,9 +11,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/reddit.ico" />
       </Head>
-      <main className={`container-fluid`}>
-        <Banner/>
+      <main className="container">
+        <Banner />
       </main>
     </>
-  )
+  );
 }
