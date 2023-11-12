@@ -5,7 +5,7 @@ export default function ListNavigation() {
         Create a post
       </button>
 
-      <div className="flex text-xs gap-x-2">
+      <div className="flex text-xs gap-x-2 items-center">
         <p>Sort by:</p>
         <p>Hot</p>
         <p>View</p>
