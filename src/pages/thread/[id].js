@@ -1,5 +1,5 @@
-import Banner from "@/components/Banner";
-import ThreadList from "@/components/ThreadList";
+import CommentList from "@/components/CommentList";
+import Post from "@/components/Post";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 
@@ -12,9 +12,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/reddit.ico" />
       </Head>
-      <main className="container">
-        <Banner />
-        <ThreadList />
+      <main className="container my-4 px-4">
+        <Post />
+        <CommentList />
       </main>
     </>
   );

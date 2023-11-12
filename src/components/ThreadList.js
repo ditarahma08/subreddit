@@ -1,7 +1,7 @@
 import Card from "./Card";
 import ListNavigation from "./listNavigation";
 
-export default function List() {
+export default function ThreadList() {
   return (
     <div className="px-4">
       <ListNavigation />
