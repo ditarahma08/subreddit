@@ -1,3 +1,4 @@
+import Banner from '@/components/banner'
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 
@@ -11,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/reddit.ico" />
       </Head>
       <main className={`container-fluid`}>
-        <span>hello</span>
+        <Banner/>
       </main>
     </>
   )
