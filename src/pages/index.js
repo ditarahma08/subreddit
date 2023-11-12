@@ -1,4 +1,5 @@
-import Banner from "@/components/banner";
+import Banner from "@/components/Banner";
+import List from "@/components/list";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 
@@ -13,6 +14,7 @@ export default function Home() {
       </Head>
       <main className="container">
         <Banner />
+        <List />
       </main>
     </>
   );
