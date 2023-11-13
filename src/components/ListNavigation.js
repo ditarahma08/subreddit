@@ -1,3 +1,5 @@
+import { Dropdown } from "./Dropdown";
+
 export default function ListNavigation() {
   return (
     <div className="flex justify-between items-center">
@@ -7,7 +9,8 @@ export default function ListNavigation() {
 
       <div className="flex text-xs gap-x-2 items-center">
         <p>Sort by:</p>
-        <p>Hot</p>
+        {/* <p>Hot</p> */}
+        <Dropdown />
         <p>View</p>
       </div>
     </div>

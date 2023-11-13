@@ -2,9 +2,12 @@ import Image from "next/image";
 import LogoReddit from "public/reddit.svg";
 import Statistic from "./Statistic";
 
-export default function Card() {
+export default function Card(props) {
   return (
-    <div className="border-b-2 pb-3 cursor-pointer">
+    <div
+      className="border-b-2 pb-3 cursor-pointer"
+      onClick={() => props.openThread()}
+    >
       <div className="flex items-center">
         <div className="flex items-center">
           <Image
