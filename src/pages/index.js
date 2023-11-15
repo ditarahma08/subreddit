@@ -17,7 +17,7 @@ export default function Home(props) {
       </Head>
       <main className="container">
         <Banner />
-        <ThreadList />
+        <ThreadList data={result} />
       </main>
     </>
   );

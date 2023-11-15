@@ -3,16 +3,22 @@ import { useState } from "react";
 import Card from "./Card";
 import ListNavigation from "./ListNavigation";
 
-export default function ThreadList() {
+export default function ThreadList(props) {
   const [cardView, setCardView] = useState("classic");
   const router = useRouter();
   return (
     <div className="px-4">
       <ListNavigation onChangeView={(value) => setCardView(value)} />
 
-      <div className="mt-4">
-        <Card style={cardView} openThread={() => router.push("/thread/1")} />
-      </div>
+      {props.data.map((thread, index) => (
+        <div className="mt-4" key={index}>
+          <Card
+            data={thread}
+            style={cardView}
+            openThread={() => router.push("/thread/1")}
+          />
+        </div>
+      ))}
     </div>
   );
 }

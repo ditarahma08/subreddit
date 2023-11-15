@@ -17,27 +17,35 @@ export default function Card(props) {
             alt="img-profile"
             className="object-cover rounded-full mr-2"
           />
-          <span className="text-xs font-bold">u/Sesmo_FPV</span>
+          <span className="text-xs font-bold">{props.data.posted_by}</span>
         </div>
 
         <span className="mx-2">&middot;</span>
 
-        <span className="text-xs">5 days ago</span>
+        <span className="text-xs">{props.data.posted_at}</span>
       </div>
 
       <div
         className={
-          props.style === "classic" ? "flex justify-between gap-x-2" : ""
+          props.style === "classic" ? "flex justify-between mt-2" : "mt-2"
         }
       >
-        <p className="font-bold text-lg">
-          HMB while I perform this crazy chick pickup move
-        </p>
+        <div>
+          <p className="font-bold text-lg">{props.data.title}</p>
 
-        {props.style !== "compact" && (
-          <div className="bg-slate-700 rounded-lg flex justify-center">
+          {props.data.content && props.style !== "compact" && (
+            <p>{props.data.content}</p>
+          )}
+        </div>
+
+        {props.style !== "compact" && props.data.image && (
+          <div
+            className={`bg-slate-700 rounded-lg flex justify-center ${
+              props.style === "classic" ? "w-[150px]" : ""
+            }`}
+          >
             <img
-              src="https://marketplace.canva.com/EAFGvk4lBcw/1/0/1600w/canva-brown-funny-meme-square-yPQiiYDM3S8.jpg"
+              src={props.data.image}
               width={props.style === "card" ? "auto" : 150}
               className="max-h-96"
             />
@@ -45,7 +53,7 @@ export default function Card(props) {
         )}
       </div>
 
-      <Statistic />
+      <Statistic comment={props.data.comment} upvote={props.data.upvote} />
     </div>
   );
 }
