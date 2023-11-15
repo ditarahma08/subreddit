@@ -1,7 +1,9 @@
 export async function getThreads() {
   return [
     {
-      title: "Thread 1",
+      title: "[Pyongyang in Pictures] With a patriotic mind.",
+      content: "",
+      image: "https://imgur.com/yRBCVHl.jpg",
     },
   ];
 }
