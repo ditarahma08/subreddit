@@ -15,7 +15,7 @@ export default function ThreadList(props) {
           <Card
             data={thread}
             style={cardView}
-            openThread={() => router.push("/thread/1")}
+            openThread={(id) => router.push(`/thread/${id}`)}
           />
         </div>
       ))}

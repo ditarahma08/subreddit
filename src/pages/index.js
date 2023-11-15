@@ -1,7 +1,6 @@
 import Banner from "@/components/Banner";
 import ThreadList from "@/components/ThreadList";
 import Head from "next/head";
-import { useState, useEffect } from "react";
 import { getThreads } from "./api/threads";
 
 export default function Home(props) {

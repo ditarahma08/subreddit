@@ -1,9 +1,23 @@
 import CommentList from "@/components/CommentList";
 import Post from "@/components/Post";
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getThread, getComment } from "../api/threads";
 
-export default function Home() {
+export default function Home(props) {
+  const { result } = props;
+
+  const [comments, setComments] = useState([]);
+
+  async function loadComment(id) {
+    const commentResult = await getComment(id);
+    setComments(commentResult);
+  }
+
+  useEffect(() => {
+    loadComment(props.id);
+  }, [props.id]);
+
   return (
     <>
       <Head>
@@ -13,9 +27,20 @@ export default function Home() {
         <link rel="icon" href="/reddit.ico" />
       </Head>
       <main className="container my-4 px-4">
-        <Post />
-        <CommentList />
+        <Post data={result} />
+        <CommentList data={comments.comment} />
       </main>
     </>
   );
+}
+
+export async function getServerSideProps({ query }) {
+  const { id } = query;
+  const result = await getThread(id);
+  return {
+    props: {
+      id,
+      result,
+    },
+  };
 }

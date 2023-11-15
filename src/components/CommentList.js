@@ -1,6 +1,7 @@
 import Comment from "./Comment";
 
-export default function CommentList() {
+export default function CommentList({ data }) {
+  console.log(">>>", data);
   return (
     <div className="mt-4">
       <div className="flex text-xs gap-x-2 items-center">
@@ -12,9 +13,13 @@ export default function CommentList() {
         Add a comment
       </button>
 
-      <div className="mt-4">
-        <Comment />
-      </div>
+      {data &&
+        data.length > 0 &&
+        data.map((comment, index) => (
+          <div className="mt-4" key={index}>
+            <Comment data={comment} />
+          </div>
+        ))}
     </div>
   );
 }

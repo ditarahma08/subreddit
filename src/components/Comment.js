@@ -1,7 +1,7 @@
 import Image from "next/image";
 import LogoReddit from "public/reddit.svg";
 
-export default function Comment() {
+export default function Comment({ data }) {
   return (
     <div className="flex items-start">
       <div className="flex items-center mr-2">
@@ -16,24 +16,21 @@ export default function Comment() {
 
       <div className="flex flex-column">
         <div className="flex items-center">
-          <span className="text-xs font-bold">u/Sesmo_FPV</span>
+          <span className="text-xs font-bold">{data.posted_by}</span>
           <span className="mx-2">&middot;</span>
-          <span className="text-xs">5 days ago</span>
+          <span className="text-xs">{data.posted_at}</span>
         </div>
 
         <div className="text-xs mt-2">
-          <p>
-            Reminds me of all those times I fell on the spikes in the prince of
-            persia game 20 years ago
-          </p>
+          <p>{data.content}</p>
         </div>
 
         <div className="mt-2 flex gap-x-2">
           <button className="bg-slate-300 rounded-3xl text-xs py-2 px-3">
-            987
+            {data.reply}
           </button>
           <button className="bg-slate-300 rounded-3xl text-xs py-2 px-3">
-            78
+            {data.upvote}
           </button>
           <button className="bg-slate-300 rounded-3xl text-xs py-2 px-3">
             Reply
@@ -43,7 +40,11 @@ export default function Comment() {
           </button>
         </div>
 
-        <a className="text-xs mt-3 cursor-pointer">2 more reply</a>
+        {data.comment.length > 0 && (
+          <a className="text-xs mt-3 cursor-pointer">
+            {data.comment.length} more reply
+          </a>
+        )}
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ export default function Card(props) {
   return (
     <div
       className="border-b-2 pb-3 cursor-pointer"
-      onClick={() => props.openThread()}
+      onClick={() => props.openThread(props.data.id)}
     >
       <div className="flex items-center">
         <div className="flex items-center">
@@ -30,7 +30,7 @@ export default function Card(props) {
           props.style === "classic" ? "flex justify-between mt-2" : "mt-2"
         }
       >
-        <div>
+        <div className={props.style === "classic" ? "max-w-[50%]" : ""}>
           <p className="font-bold text-lg">{props.data.title}</p>
 
           {props.data.content && props.style !== "compact" && (
@@ -39,11 +39,7 @@ export default function Card(props) {
         </div>
 
         {props.style !== "compact" && props.data.image && (
-          <div
-            className={`bg-slate-700 rounded-lg flex justify-center ${
-              props.style === "classic" ? "w-[150px]" : ""
-            }`}
-          >
+          <div className={`bg-slate-700 rounded-lg flex justify-center`}>
             <img
               src={props.data.image}
               width={props.style === "card" ? "auto" : 150}
