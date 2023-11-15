@@ -25,18 +25,24 @@ export default function Card(props) {
         <span className="text-xs">5 days ago</span>
       </div>
 
-      <div>
+      <div
+        className={
+          props.style === "classic" ? "flex justify-between gap-x-2" : ""
+        }
+      >
         <p className="font-bold text-lg">
           HMB while I perform this crazy chick pickup move
         </p>
 
-        <div className="bg-slate-700 rounded-lg flex justify-center">
-          <img
-            src="https://marketplace.canva.com/EAFGvk4lBcw/1/0/1600w/canva-brown-funny-meme-square-yPQiiYDM3S8.jpg"
-            width="auto"
-            className="max-h-96"
-          />
-        </div>
+        {props.style !== "compact" && (
+          <div className="bg-slate-700 rounded-lg flex justify-center">
+            <img
+              src="https://marketplace.canva.com/EAFGvk4lBcw/1/0/1600w/canva-brown-funny-meme-square-yPQiiYDM3S8.jpg"
+              width={props.style === "card" ? "auto" : 150}
+              className="max-h-96"
+            />
+          </div>
+        )}
       </div>
 
       <Statistic />

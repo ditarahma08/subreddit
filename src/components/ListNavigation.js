@@ -1,7 +1,7 @@
 import { Dropdown } from "./Dropdown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function ListNavigation() {
+export default function ListNavigation(props) {
   const [sort, setSort] = useState("hot");
   const [view, setView] = useState("card");
 
@@ -37,6 +37,10 @@ export default function ListNavigation() {
   function getSelectedViewLabel(value) {
     return filterView.find((item) => item.value === value);
   }
+
+  useEffect(() => {
+    props.onChangeView(view);
+  }, [view]);
 
   return (
     <div className="flex justify-between items-center">
