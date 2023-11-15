@@ -1,26 +1,25 @@
 import Image from "next/image";
 import LogoReddit from "public/reddit.svg";
+import { useState } from "react";
 
 export default function Comment({ data }) {
-  return (
-    <div className="flex items-start">
-      <div className="flex items-center mr-2">
-        <Image
-          src={LogoReddit}
-          height={32}
-          width={32}
-          alt="img-profile"
-          className="object-cover rounded-full mr-2"
-        />
-      </div>
+  const [openComment, setOpenComment] = useState(false);
 
-      <div className="flex flex-column">
+  function renderInfo() {
+    return (
+      <>
         <div className="flex items-center">
           <span className="text-xs font-bold">{data.posted_by}</span>
           <span className="mx-2">&middot;</span>
           <span className="text-xs">{data.posted_at}</span>
         </div>
+      </>
+    );
+  }
 
+  function renderContent() {
+    return (
+      <>
         <div className="text-xs mt-2">
           <p>{data.content}</p>
         </div>
@@ -39,12 +38,54 @@ export default function Comment({ data }) {
             Share
           </button>
         </div>
+      </>
+    );
+  }
 
-        {data.comment.length > 0 && (
-          <a className="text-xs mt-3 cursor-pointer">
+  return (
+    <div className="flex items-start">
+      <div className="flex items-center mr-2">
+        <Image
+          src={LogoReddit}
+          height={32}
+          width={32}
+          alt="img-profile"
+          className="object-cover rounded-full mr-2"
+        />
+      </div>
+
+      <div className="flex flex-column">
+        {renderInfo()}
+        {renderContent()}
+
+        {data.comment.length > 0 && !openComment && (
+          <a
+            className="text-xs mt-3 cursor-pointer"
+            onClick={() => setOpenComment(true)}
+          >
             {data.comment.length} more reply
           </a>
         )}
+
+        {openComment &&
+          data.comment.length > 0 &&
+          data.comment.map((item, index) => (
+            <div className="flex items-start mt-3">
+              <div className="flex items-center mr-2">
+                <Image
+                  src={LogoReddit}
+                  height={32}
+                  width={32}
+                  alt="img-profile"
+                  className="object-cover rounded-full mr-2"
+                />
+              </div>
+              <div className="flex flex-column">
+                {renderInfo()}
+                {renderContent()}
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );
